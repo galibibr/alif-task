@@ -4,10 +4,9 @@ export interface User {
    fullname: string
    email: string
    phone: string
-   birthday: string
+   age: number
    languages: string[]
    major: string
    skills: string[]
-   experience: number
-   about: string
+   experience: 'no experience' | 'less than 1 year' | '1-3 years' | '3-5 years' | '5+ years'
 }
