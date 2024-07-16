@@ -1,4 +1,4 @@
-export interface User {
+export interface UserI {
    id: number
    sex: 'male' | 'female'
    fullname: string
