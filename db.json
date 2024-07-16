@@ -1,5 +1,17 @@
 {
    "data": [
-      {"id": 1, "title": "Task 1", "completed": false}
+      {
+         "id": 1,
+         "sex": "male",
+         "fullname": "John Doe",
+         "email": "jdoe@me.com",
+         "phone": "555-555-5555",
+         "birthday": "1990-01-01",
+         "languages": ["English", "Spanish"],
+         "major": "React Developer",
+         "skills": ["HTML", "CSS", "JavaScript"],
+         "experience": 5,
+         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vitae ultricies luctus, nunc nisl aliquam nisl, vitae ultricies nisl nisl aliquam nisl."
+      }
    ]
 }
