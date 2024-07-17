@@ -16,7 +16,7 @@ export const Modal = ({ children, onClose }: ModlProps) => {
          />
          <div className="bg-white absolute p-4 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20 rounded-[12px] shadow-md">
             <div className="flex justify-end">
-               <button onClick={onClose}>&#x2715;</button>
+               <button onClick={onClose} className="hover:text-slate-400">&#x2715;</button>
             </div>
             {children}
          </div>
