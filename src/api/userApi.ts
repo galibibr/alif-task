@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { User } from "../helpers/types";
+import type { UserI } from "../helpers/types";
 import { apiUrl } from "../helpers/env";
 
 export const userApi = createApi({
@@ -7,7 +7,7 @@ export const userApi = createApi({
    baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
    tagTypes: ['User'],
    endpoints: (builder) => ({
-      getUsers: builder.query<User[], void>({
+      getUsers: builder.query<UserI[], void>({
          query: () => 'data',
          providesTags: ['User']
       })
