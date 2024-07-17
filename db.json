@@ -1,16 +1,37 @@
 {
-   "data": [
-      {
-         "id": 1,
-         "sex": "male",
-         "fullname": "John Doe",
-         "email": "jdoe@me.com",
-         "phone": "555-555-5555",
-         "age": 25,
-         "languages": ["English", "Spanish"],
-         "major": "React Developer",
-         "skills": ["HTML", "CSS", "JavaScript"],
-         "experience": "1-3 years"
-      }
-   ]
+  "data": [
+    {
+      "id": 1,
+      "sex": "male",
+      "fullname": "John Doe",
+      "email": "jdoe@me.com",
+      "phone": "555-555-5555",
+      "age": 25,
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "major": "React Developer",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "experience": "1-3 years"
+    },
+    {
+      "id": 1721218392897,
+      "fullname": "David James",
+      "email": "d.james@mail.com",
+      "phone": "444-444-4444",
+      "age": 24,
+      "major": "Software Enginer",
+      "skills": [
+        "React",
+        " Next.js",
+        " TS"
+      ],
+      "experience": "1-3 years"
+    }
+  ]
 }

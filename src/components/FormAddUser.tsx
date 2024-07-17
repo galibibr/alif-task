@@ -1,14 +1,19 @@
+import { useEffect } from "react";
 import { formErrors, UserI } from "../helpers/types";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { submitNewUser } from "../store/userSlice";
+import { setShowModal, submitNewUser } from "../store/userSlice";
+import { usePostUserMutation } from "../api/userApi";
 
 export const FormAddUser = () => {
-   const formErrors: formErrors = useAppSelector((state) => state.user.formErrors);
    const dispatch = useAppDispatch();
+   const formErrors: formErrors = useAppSelector((state) => state.user.formErrors);
+   const isCorrectForm = useAppSelector((state) => state.user.isCorrectForm);
+   const newUser = useAppSelector((state) => state.user.newUser);
+   const [ postUser ] = usePostUserMutation()
 
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
       event.preventDefault();
-      const newUser: UserI = {
+      const user: UserI = {
          id: Date.now(),
          fullname: event.currentTarget.fullname.value,
          email: event.currentTarget.email.value,
@@ -19,8 +24,17 @@ export const FormAddUser = () => {
          experience: event.currentTarget.experience.value,
       };
 
-      dispatch(submitNewUser(newUser));
+      dispatch(submitNewUser(user));
    };
+
+   useEffect(() => {
+      if (isCorrectForm) {
+         postUser(newUser)
+         dispatch(setShowModal(false));
+      } else {
+         console.log('incorrect form');
+      }
+   }, [isCorrectForm]);
 
    return (
       <div>
@@ -125,7 +139,7 @@ export const FormAddUser = () => {
             {/* Experience */}
             <div className="flex flex-col">
                <label htmlFor="experience">
-                  Experience <span className="text-red-500">*</span>
+                  Experience
                </label>
                <select id="experience" name="experience" className="border px-2 py-1 rounded-md">
                   <option value="no experience">No experience</option>
