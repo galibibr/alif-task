@@ -14,13 +14,19 @@ export const Header = () => {
       dispatch(setShowModal(true));
    }
    return (
-      <div>
-         <button onClick={handleOpen}>Add new user</button>
+      <header className="shadow-md">
+         <div className="py-2 px-[32px] mx-auto max-w-[1200px]">
+            <button
+               onClick={handleOpen}
+               className="bg-slate-300 hover:bg-slate-200 px-3 py-1 rounded-md font-medium">
+               Add new user
+            </button>
+         </div>
          {showModal && (
             <Modal onClose={handleClose}>
                <FormAddUser />
             </Modal>
          )}
-      </div>
+      </header>
    );
 };

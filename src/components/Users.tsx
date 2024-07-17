@@ -15,7 +15,7 @@ export default function Users({ users }: UsersProps): JSX.Element {
       dispatch(setShowModal(false))
    }, [users.length])
   return (
-     <div>
+     <div className="px-[32px] mx-auto max-w-[1200px]">
         {users.map((user: UserI) => (
            <User key={user.id} user={user} />
         ))}
