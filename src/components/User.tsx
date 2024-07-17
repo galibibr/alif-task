@@ -1,17 +1,19 @@
-import type { UserI} from "../helpers/types";
+import type { UserI } from "../helpers/types";
 
 type UserProp = {
-   user: UserI
-}
+   user: UserI;
+};
 export const User = ({ user }: UserProp): JSX.Element => {
-  return (
-     <div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] border">
-        <p>{user.fullname}</p>
-        <p>{user.email}</p>
-        <p>{user.phone}</p>
-        <p>{user.age} years</p>
-        <p>{user.major}</p>
-        <p>{user.experience}</p>
-     </div>
-  );
-}
+   return (
+      <tbody>
+         <tr>
+            <td className="border px-1">{user.fullname}</td>
+            <td className="border px-1">{user.email}</td>
+            <td className="border px-1">{user.phone}</td>
+            <td className="border px-1">{user.age} years</td>
+            <td className="border px-1">{user.major}</td>
+            <td className="border px-1">{user.experience}</td>
+         </tr>
+      </tbody>
+   );
+};

@@ -12,9 +12,11 @@ export default function App(): JSX.Element {
    return (
       <div>
         <Header />
-         {users?.length ? (
-            <Users users={users} />
-         ) : <div>No users found</div>}
+        <main className="py-4">
+            {users?.length ? (
+               <Users users={users} />
+            ) : <div>No users found</div>}
+         </main>
       </div>
    );
 }
