@@ -19,17 +19,17 @@ export default function Users({ users }: UsersProps): JSX.Element {
       <div className="px-[32px] mx-auto max-w-[1200px]">
          <div>
             <p className="font-bold text-xl">Users</p>
-            <p className="text-sm">Total: {users.length}</p>   
+            <p className="text-sm">Total: {users.length}</p>
          </div>
          <table className="w-full border-separate border">
             <thead>
                <tr>
-                  <th className="border">Name</th>
+                  <th className="border">Full Name</th>
                   <th className="border">Email</th>
                   <th className="border">Phone</th>
                   <th className="border">Age</th>
                   <th className="border">Major</th>
-                  <th className="border">Skills</th>
+                  <th className="border">Experience</th>
                </tr>
             </thead>
             {users.map((user: UserI) => (
