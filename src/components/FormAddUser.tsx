@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { formErrors, UserI } from "../helpers/types";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { setShowModal, submitNewUser } from "../store/userSlice";
+import { setIsCorrectForm, setPostUserIsLoading, setShowModal, submitNewUser } from "../store/userSlice";
 import { usePostUserMutation } from "../api/userApi";
 
 export const FormAddUser = () => {
@@ -9,6 +9,7 @@ export const FormAddUser = () => {
    const formErrors: formErrors = useAppSelector((state) => state.user.formErrors);
    const isCorrectForm = useAppSelector((state) => state.user.isCorrectForm);
    const newUser = useAppSelector((state) => state.user.newUser);
+   const postUserIsLoading = useAppSelector((state) => state.user.postUserIsLoading);
    const [ postUser ] = usePostUserMutation()
 
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -29,10 +30,12 @@ export const FormAddUser = () => {
 
    useEffect(() => {
       if (isCorrectForm) {
-         postUser(newUser)
-         dispatch(setShowModal(false));
+         newUser && postUser(newUser)
+         dispatch(setPostUserIsLoading(true))
+         dispatch(setIsCorrectForm(false));
       } else {
          console.log('incorrect form');
+         dispatch(setIsCorrectForm(false));
       }
    }, [isCorrectForm]);
 
@@ -152,9 +155,10 @@ export const FormAddUser = () => {
             {/* Submit */}
             <div className="mt-2">
                <button
+                  disabled={postUserIsLoading}
                   type="submit"
                   className="border px-2 py-1 rounded-md w-full font-[500] text-[18px] bg-slate-300 hover:bg-slate-200">
-                  Add user
+                     {postUserIsLoading ? "Saving..." : "Save"}
                </button>
             </div>
          </form>

@@ -7,6 +7,7 @@ export interface UserState {
    formErrors: formErrors;
    isCorrectForm: boolean;
    showModal: boolean;
+   postUserIsLoading: boolean
 }
 
 const initialState: UserState = {
@@ -26,6 +27,7 @@ const initialState: UserState = {
    },
    isCorrectForm: false,
    showModal: false,
+   postUserIsLoading: false
 };
 
 export const userSlice = createSlice({
@@ -53,9 +55,12 @@ export const userSlice = createSlice({
       setShowModal: (state, { payload }: PayloadAction<boolean>) => {
          state.showModal = payload;
       },
+      setPostUserIsLoading: (state, { payload }: PayloadAction<boolean>) => {
+         state.postUserIsLoading = payload
+      }
    },
 });
 
-export const { submitNewUser, setIsCorrectForm, setShowModal } = userSlice.actions;
+export const { submitNewUser, setIsCorrectForm, setShowModal, setPostUserIsLoading } = userSlice.actions;
 
 export default userSlice.reducer;
