@@ -5,6 +5,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
    newUser: UserI;
    formErrors: formErrors;
+   isCorrectForm: boolean;
+   showModal: boolean;
 }
 
 const initialState: UserState = {
@@ -22,6 +24,8 @@ const initialState: UserState = {
       fullname: null,
       age: null,
    },
+   isCorrectForm: false,
+   showModal: false,
 };
 
 export const userSlice = createSlice({
@@ -31,20 +35,27 @@ export const userSlice = createSlice({
       submitNewUser: (state, { payload }: PayloadAction<UserI>) => {
          const { fullname, age } = payload;
 
-         state.formErrors.fullname = fullname.split(" ").length < 2
+         state.formErrors.fullname = fullname.trim().split(" ").length < 2
             ? "Please enter your full name"
             : null;
-         state.formErrors.age = age <= 10 || age > 100
+         state.formErrors.age = (age <= 10 || age > 100)
             ? "Please enter a valid age"
             : null;
 
-         if (fullname.split(" ").length === 2 && age >= 10 && age < 100) {
+         if (fullname.trim().split(" ").length === 2 && age >= 10 && age < 100) {
             state.newUser = payload;
-         }
+            state.isCorrectForm = true;
+         } 
+      },
+      setIsCorrectForm: (state, { payload }: PayloadAction<boolean>) => {
+         state.isCorrectForm = payload;
+      },
+      setShowModal: (state, { payload }: PayloadAction<boolean>) => {
+         state.showModal = payload;
       },
    },
 });
 
-export const { submitNewUser } = userSlice.actions;
+export const { submitNewUser, setIsCorrectForm, setShowModal } = userSlice.actions;
 
 export default userSlice.reducer;
