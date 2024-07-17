@@ -8,3 +8,8 @@ export interface UserI {
    skills: string[]
    experience: 'no experience' | 'less than 1 year' | '1-3 years' | '3-5 years' | '5+ years'
 }
+
+export interface formErrors {
+   fullname: string | null
+   age: string | null
+}
