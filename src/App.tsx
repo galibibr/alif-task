@@ -1,22 +1,20 @@
 import { useGetUsersQuery } from "./api/userApi";
-import { User } from "./helpers/types";
+import { Header } from "./components/Header";
+import Users from "./components/Users";
 
-export default function App() {
-   const { data, isLoading, error } = useGetUsersQuery();
+export default function App(): JSX.Element {
+   const { data: users, isLoading, error } = useGetUsersQuery();
 
-   if (error) return <div>Error</div>;
+   if (error) return <div>Request failed</div>
 
    if (isLoading) return <div>Loading...</div>;
 
    return (
       <div>
-         {data ? (
-            <>
-               {data.map((user: User) => (
-                  <h3 key={user.id}>{user.fullname}</h3>
-               ))}
-            </>
-         ) : null}
+        <Header />
+         {users?.length ? (
+            <Users users={users} />
+         ) : <div>No users found</div>}
       </div>
    );
 }
